@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AssignmentX.Models.BankAccount>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index
+    
+    </h2>
+@*<input id="num"  />
+<button> Search </button> 
+@Html.ActionLink("GetByID", "GetAllbyid", new { id = 4 }) |*@
+<form asp-controller="Index" asp-action="GetAllbyid" method="get">
+    <p>
+        Search by User's ID: <input type="number" name="id">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.userid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.iban)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.balance)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.userid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.iban)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.balance)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.acc_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.acc_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.acc_id })
+        </td>
+        <td>
+          
+
+        </td>
+
+    </tr>
+}
+
+</table>
+

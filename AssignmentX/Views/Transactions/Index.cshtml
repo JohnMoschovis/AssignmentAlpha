@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AssignmentX.Models.Transactions>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form asp-controller="Index" asp-action="GetAllbyid" method="get">
+    <p>
+        Search by User's ID: <input type="number" name="id">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.user_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.tid }) |
+            @Html.ActionLink("Details", "Details", new { id=item.tid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.tid })
+        </td>
+    </tr>
+}
+
+</table>
